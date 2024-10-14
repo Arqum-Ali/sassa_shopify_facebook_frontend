@@ -15,7 +15,7 @@ const FacebookCallback = () => {
       if (code) {
         try {
           // Send the code to the backend to exchange for access token
-          const response = await axios.get(`http://127.0.0.1:8000/facebook/callback/?code=${code}`);
+          const response = await axios.get(`https://sassa-application-17d85ba3386f.herokuapp.com/facebook/callback/?code=${code}`);
           
           if (response.status === 200 && response.data.access_token) {
             // Login successful, handle token and ads data

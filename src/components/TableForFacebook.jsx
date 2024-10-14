@@ -49,7 +49,7 @@ const TableForFacebook = ({ access_token, account_id }) => {
       try {
         setLoading(true);
         const response = await fetch(
-          `http://127.0.0.1:8000/facebook/adaccounts/${account_id}/campaigns/`,
+          `https://sassa-application-17d85ba3386f.herokuapp.com/facebook/adaccounts/${account_id}/campaigns/`,
           {
             method: "GET",
             headers: {

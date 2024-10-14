@@ -10,7 +10,7 @@ const Login = () => {
   const handleFacebookLogin = async () => {
     try {
       // Step 1: Get Facebook OAuth URL from backend
-      const response = await axios.get('http://127.0.0.1:8000/facebook/login/facebook/');
+      const response = await axios.get('https://sassa-application-17d85ba3386f.herokuapp.com/facebook/login/facebook/');
       console.log(response.data);
       if (response.status === 200) {
         // Step 2: Redirect user to Facebook OAuth page
