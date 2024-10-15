@@ -33,7 +33,7 @@ const TableForFacebook = ({ access_token, account_id }) => {
   );
   const [searchTerm, setSearchTerm] = useState("");
   const [data, setData] = useState([]); // Store campaign data here
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [editedValue, setEditedValue] = useState("");
