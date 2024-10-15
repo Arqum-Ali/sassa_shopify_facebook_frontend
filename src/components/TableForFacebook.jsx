@@ -46,7 +46,7 @@ const TableForFacebook = ({ access_token, account_id }) => {
 
   useEffect(() => {
     const fetchCampaigns = async () => {
-      try {
+      // try {
         // setLoading(true);
         const response = await fetch(
           `https://sassa-application-17d85ba3386f.herokuapp.com/facebook/adaccounts/${account_id}/campaigns/`,
@@ -91,9 +91,11 @@ const TableForFacebook = ({ access_token, account_id }) => {
         }));
 
         setData(formattedData);
-      } catch (error) {
-        setError(error.message);
-      } 
+      // } 
+      // catch (error) {
+      //   // setError(error.message);
+      //   Pass
+      // } 
       // finally {
       //   setLoading(false);
       // }

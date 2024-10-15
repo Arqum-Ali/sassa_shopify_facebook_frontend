@@ -1,7 +1,7 @@
 import React from 'react';
 import facebook from "./../assets/download.png";
 import shopify from "./../assets/download (1).png";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 const Login = () => {
