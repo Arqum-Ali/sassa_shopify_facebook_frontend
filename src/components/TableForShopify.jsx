@@ -250,11 +250,11 @@ const TableForShopify = () => {
   //   },
   // ]);
 
-  const filteredData = data.filter((row) =>
-    columnNames.some((column) =>
-      row[column]?.toString().toLowerCase().includes(searchTerm.toLowerCase())
-    )
-  );
+  // const filteredData = data.filter((row) =>
+  //   columnNames.some((column) =>
+  //     row[column]?.toString().toLowerCase().includes(searchTerm.toLowerCase())
+  //   )
+  // );
 
   const isResizing = useRef(null);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -370,7 +370,7 @@ const TableForShopify = () => {
             </div>
 
             <div>
-              {filteredData.map((row, i) => (
+              {/* {filteredData.map((row, i) => (
                 <div key={i} className="flex">
                   {columnNames.map((name, index) => (
                     <div
@@ -413,7 +413,7 @@ const TableForShopify = () => {
                     className="border-r p-1 bg-white"
                   />
                 </div>
-              ))}
+              ))} */}
             </div>
 
             <div className="flex border-t sticky bottom-0 bg-white z-20">

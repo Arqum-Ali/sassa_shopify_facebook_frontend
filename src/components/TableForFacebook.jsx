@@ -33,8 +33,8 @@ const TableForFacebook = ({ access_token, account_id }) => {
   );
   const [searchTerm, setSearchTerm] = useState("");
   const [data, setData] = useState([]); // Store campaign data here
-  // const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  // const [loading, setLoading] = useState(true); // eslint-disable-next-line no-unused-vars
+  const [error, setError] = useState(null); // eslint-disable-next-line no-unused-vars
   const [isEditing, setIsEditing] = useState(false);
   const [editedValue, setEditedValue] = useState("");
   const [editingRowIndex, setEditingRowIndex] = useState(null);
@@ -47,7 +47,7 @@ const TableForFacebook = ({ access_token, account_id }) => {
   useEffect(() => {
     const fetchCampaigns = async () => {
       try {
-        setLoading(true);
+        // setLoading(true);
         const response = await fetch(
           `https://sassa-application-17d85ba3386f.herokuapp.com/facebook/adaccounts/${account_id}/campaigns/`,
           {
@@ -93,9 +93,10 @@ const TableForFacebook = ({ access_token, account_id }) => {
         setData(formattedData);
       } catch (error) {
         setError(error.message);
-      } finally {
-        setLoading(false);
-      }
+      } 
+      // finally {
+      //   setLoading(false);
+      // }
     };
 
     if (account_id && access_token) {
