@@ -5,6 +5,7 @@ import FacebookLogin from "./pages/FacebookLogin";
 import ShopifyLogin from "./pages/ShopifyLogin";
 
 import FacebookCallback from "./pages/FacebookCallback";
+import PrivacyPolicy from "./components/privacy_policy";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/callback" element={<FacebookCallback />} />
+          <Route path="/Privacy-Policy" element={<PrivacyPolicy />} />
 
           <Route path="/facebook-login" element={<FacebookLogin />} />
           <Route path="/shopify-login" element={<ShopifyLogin />} />
