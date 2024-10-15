@@ -34,7 +34,7 @@ const TableForFacebook = ({ access_token, account_id }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [data, setData] = useState([]); // Store campaign data here
   // const [loading, setLoading] = useState(true); // eslint-disable-next-line no-unused-vars
-  const [error, setError] = useState(null); // eslint-disable-next-line no-unused-vars
+  // const [error, setError] = useState(null); // eslint-disable-next-line no-unused-vars
   const [isEditing, setIsEditing] = useState(false);
   const [editedValue, setEditedValue] = useState("");
   const [editingRowIndex, setEditingRowIndex] = useState(null);
