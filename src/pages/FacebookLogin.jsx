@@ -6,9 +6,11 @@ import TableForFacebook from "../components/TableForFacebook";
 
 const FacebookLogin = () => {
   const location = useLocation(); // Get the current location
-  const { access_token, ads_data } = location.state || {}; // Extract access_token and ads_data
-  const firstObject = ads_data[0]; // Access the first object in the array
-  const idValue = firstObject.id;  // Access the 'id' property of that object
+  const access_token = localStorage.getItem("access_token");
+  const idValue = localStorage.getItem("account_id");
+  // const { access_token, ads_data } = location.state || {}; // Extract access_token and ads_data
+  // const firstObject = ads_data[0]; // Access the first object in the array
+  // const idValue = firstObject.id;  // Access the 'id' property of that object
   
   console.log('1234-----------', access_token, idValue )
   console.log('1234 ----------' , idValue)
