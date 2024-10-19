@@ -1,26 +1,30 @@
 import React from 'react';
 import facebook from "./../assets/download.png";
 import shopify from "./../assets/download (1).png";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
-const Login = () => {
-  // const navigate = useNavigate();
+const Shopify_Login = () =>{
+  const navigate = useNavigate();
 
-  const handleFacebookLogin = async () => {
-    try {
-      // Step 1: Get Facebook OAuth URL from backend
-      const response = await axios.get('https://sassa-application-17d85ba3386f.herokuapp.com/facebook/login/facebook/');
-      console.log(response.data);
-      if (response.status === 200) {
-        // Step 2: Redirect user to Facebook OAuth page
-        window.location.href = response.data.redirect_url;
-      } else {
-        console.error("Failed to get Facebook login URL.");
-      }
-    } catch (error) {
-      console.error("There was an error with Facebook login:", error);
-    }
+  const handleShopifyLogin = async () => {
+    // try {
+    //   // Step 1: Get Facebook OAuth URL from backend
+    //   const response = await axios.get('https://sassa-application-17d85ba3386f.herokuapp.com/facebook/login/facebook/');
+    //   console.log(response.data);
+    //   if (response.status === 200) {
+    //     // Step 2: Redirect user to Facebook OAuth page
+    //     window.location.href = response.data.redirect_url;
+    //   } else {
+    //     console.error("Failed to get Facebook login URL.");
+    //   }
+    // } catch (error) {
+    //   console.error("There was an error with Facebook login:", error);
+    // }
+    console.log("enter in the shopify")
+    navigate('/facebook-login', {
+        // state: { access_token, ads_data } // Passing data via state
+      });
   };
   
 
@@ -71,19 +75,16 @@ const Login = () => {
         </h2>
         <hr className="mb-8" />
         <div 
-          onClick={handleFacebookLogin} 
+          onClick={handleShopifyLogin} 
           className="border mb-4 p-1 cursor-pointer rounded-full flex justify-center items-center"
         >
-          <img className="w-3 h-3 mr-2" src={facebook} alt="Facebook login" />
-          <h2>Log in with Facebook</h2>
-        </div>
-        {/* <div className="border p-1 cursor-pointer rounded-full flex justify-center items-center">
+
           <img className="w-3 h-4 mr-2" src={shopify} alt="Shopify login" />
           <h2>Log in with Shopify</h2>
-        </div> */}
+        </div>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Shopify_Login;

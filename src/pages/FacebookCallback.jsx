@@ -23,8 +23,11 @@ const FacebookCallback = () => {
 
             // Step 1: Prepare the data to navigate with
             const { access_token, ads_data } = response.data;
-
+            localStorage.setItem('access_token', access_token);
+            localStorage.setItem('account_id', ads_data[0].id);
+            console.log(access_token,"account_id",ads_data[0].id)
             // Step 2: Navigate to the desired route with the data
+            
             navigate('/facebook-login', {
               state: { access_token, ads_data } // Passing data via state
             });
