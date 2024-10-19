@@ -1,7 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Switch } from "antd";
+// const TableForFacebook = ({ access_token, account_id }) => {
 
-const TableForFacebook = ({ access_token, account_id }) => {
+const TableForFacebook = () => {
   const allColumns = [
     "Action",
     "Campaign Name",
@@ -48,6 +49,8 @@ const TableForFacebook = ({ access_token, account_id }) => {
     const fetchCampaigns = async () => {
       // try {
         // setLoading(true);
+        const access_token = localStorage.getItem("access_token");
+        const account_id = localStorage.getItem("account_id");
         const response = await fetch(
           `https://sassa-application-17d85ba3386f.herokuapp.com/facebook/adaccounts/${account_id}/campaigns/`,
           {
@@ -101,12 +104,13 @@ const TableForFacebook = ({ access_token, account_id }) => {
       // }
     };
 
-    if (account_id && access_token) {
+    // if (account_id && access_token) {
       fetchCampaigns();
-    }
-  }, [account_id, access_token]);
+    // }
+  // }, [account_id, access_token]);
 
-  useEffect(() => {
+}, []);
+useEffect(() => {
     const handleClickOutside = (event) => {
       if (
         dropdownRef.current &&
