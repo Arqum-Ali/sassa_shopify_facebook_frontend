@@ -58,10 +58,8 @@ const Shopify_Login = () =>{
           </div>
         </div>
         <p className="w-[475px]">
-          It is a long established fact that a reader will be distracted by the
-          readable content of a page when looking at its layout. The point of
-          using Lorem Ipsum is that it has a more-or-less normal distribution of
-          letters, a
+         Congratulation! You sucessfully login 
+                with facebook
           <span className="font-bold">
             s opposed to using 'Content here, content
           </span>{" "}

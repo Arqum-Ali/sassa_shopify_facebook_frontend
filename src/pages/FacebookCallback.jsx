@@ -31,7 +31,7 @@ const FacebookCallback = () => {
             console.log(access_token,"account_id",ads_data[0].id)
             // Step 2: Navigate to the desired route with the data
             
-            navigate('/facebook-login', {
+            navigate('/Shopify_Login', {
               state: { access_token, ads_data } // Passing data via state
             });
           } else {
