@@ -1,8 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Switch } from "antd";
-// const TableForFacebook = ({ access_token, account_id }) => {
 
-const TableForFacebook = () => {
+const TableForFacebook = ({ access_token, account_id }) => {
   const allColumns = [
     "Action",
     "Campaign Name",
@@ -23,7 +22,7 @@ const TableForFacebook = () => {
     "Impressions",
     "Unique In-app content views",
     "CPM(cost per 1,000 impression)",
-    "Unique CTR(link click through rate)",
+    // "Unique CTR(link click through rate)",
     "Quality ranking",
     "Engagement rate ranking",
   ];
@@ -47,12 +46,9 @@ const TableForFacebook = () => {
 
   useEffect(() => {
     const fetchCampaigns = async () => {
-      // try {
-        // setLoading(true);
-        const access_token = localStorage.getItem("access_token");
-        const account_id = localStorage.getItem("account_id");
+      try {
         const response = await fetch(
-          `https://sassa-application-17d85ba3386f.herokuapp.com/facebook/adaccounts/${account_id}/campaigns/`,
+          `http://127.0.0.1:8000/facebook/adaccounts/${account_id}/campaigns/`,
           {
             method: "GET",
             headers: {
@@ -61,56 +57,87 @@ const TableForFacebook = () => {
             },
           }
         );
+    
         if (!response.ok) {
           throw new Error("Failed to fetch campaigns");
         }
-
+    
         const result = await response.json();
-
-        // Format and set the fetched data
-        const formattedData = result.data.map((item) => ({
+        console.log("API Response:", result); // Log the entire response for inspection
+    
+        // Use result directly as it is an array
+        
+        const formattedData = result.map((item) => ({
           Action: "Enable/Disable",
-          "Campaign Name": item.name || "-",
+          "Campaign Name": item.name|| "-",
           Budget: item.daily_budget || "-",
           Delivery: item.status || "-",
           "Ad Set Name": item.ad_set_name || "-",
+
+
+          
           Results: item.results || "-",
-          Reach: item.reach || "-",
-          "Amount Spent": item.amount_spent || "-",
-          "Cost per Result": item.cost_per_result || "-",
-          "Purchases Conversion Value": item.purchases_conversion_value || "-",
+
+
+
+          "Reach": item.insights && item.insights[0] ? item.insights[0].reach : "-",
+          "Amount Spent": item.insights && item.insights[0] ? item.insights[0].spend : "-",
+          "Cost per Result": item.insights && item.insights[0] ? item.insights[0].cpc : "-",
+
+
+
+          "Purchases Conversion Value": item.insights && item.insights[0] && item.insights[0].purchase_roas && item.insights[0].purchase_roas[0] ? item.insights[0].purchase_roas[0].value : "-",
+
+
+          
           "Date Last Edited": item.updated_time || "-",
           "Ad ID": item.id || "-",
-          "Purchase ROAS": item.purchase_roas || "-",
-          "Website Purchase ROAS": item.website_purchase_roas || "-",
-          Frequency: item.frequency || "-",
-          "CPC(all)": item.cpc || "-",
-          Impressions: item.impressions || "-",
-          "Unique In-app content views": item.unique_views || "-",
-          "CPM(cost per 1,000 impression)": item.cpm || "-",
-          "Unique CTR(link click through rate)": item.ctr || "-",
-          "Quality ranking": item.quality_ranking || "-",
-          "Engagement rate ranking": item.engagement_ranking || "-",
+
+
+
+
+          "Purchase ROAS": item.insights && item.insights[0] && item.insights[0].purchase_roas && item.insights[0].purchase_roas[0] ? item.insights[0].purchase_roas[0].value : "-",
+          "Website Purchase ROAS":  item.insights && item.insights[0] && item.insights[0].website_purchase_roas && item.insights[0].website_purchase_roas[0] ? item.insights[0].website_purchase_roas[0].value : "-",
+
+
+
+          Frequency: item.insights && item.insights[0] ? item.insights[0].frequency : "-",
+          "CPC(all)": item.insights && item.insights[0] ? item.insights[0].cpc : "-",
+          Impressions: item.insights && item.insights[0] ? item.insights[0].impressions : "-",
+
+
+
+          // "Unique In-app content views": item.unique_views || "-",
+
+
+
+          "CPM(cost per 1,000 impression)": item.insights && item.insights[0] ? item.insights[0].cpm : "-",
+
+
+
+          "Unique CTR(link click through rate)": item.insights && item.insights[0] ? item.insights[0].ctr : "-",
+
+
+
+          "Quality ranking": item.insights && item.insights[0] ? item.insights[0].quality_ranking : "-",
+          "Engagement rate ranking":item.insights && item.insights[0] ? item.insights[0].engagement_rate_ranking : "-",
         }));
-
+    
         setData(formattedData);
-      // } 
-      // catch (error) {
-      //   // setError(error.message);
-      //   Pass
-      // } 
-      // finally {
-      //   setLoading(false);
-      // }
+      } catch (error) {
+        console.error("Error fetching campaigns:", error);
+        // Optionally, set an error state to show a message in the UI
+      } finally {
+        // setLoading(false);
+      }
     };
-
-    // if (account_id && access_token) {
+        
+    if (account_id && access_token) {
       fetchCampaigns();
-    // }
-  // }, [account_id, access_token]);
+    }
+  }, [account_id, access_token]);
 
-}, []);
-useEffect(() => {
+  useEffect(() => {
     const handleClickOutside = (event) => {
       if (
         dropdownRef.current &&
